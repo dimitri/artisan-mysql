@@ -302,12 +302,9 @@
     ;; read eof packet
     (read-packet stream)
     ;; read row packets data
-    (let (result)
-      (do ((packet (read-packet stream) (read-packet stream)))
-          ((eof-packet-p packet))
-        (push (parse-row-packet packet column-names-list)
-              result))
-      (nreverse result))))
+    (loop :for packet := (read-packet stream)
+       :until (eof-packet-p packet)
+       :collect (parse-row-packet packet column-names-list))))
 
 (defun intern-to-keyword (str)
   (intern (string-upcase str) "KEYWORD"))
