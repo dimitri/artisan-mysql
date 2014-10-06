@@ -1,4 +1,4 @@
-(defsystem #:mysql
+(defsystem #:artisan-mysql
     :serial t
     :name "MySQL Native Driver"
     :author "Dimitri Fontaine"
