@@ -1,4 +1,4 @@
-(defpackage #:mysql
+(defpackage #:artisan-mysql
   (:use :cl)
   (:export #:connect
            #:disconnect

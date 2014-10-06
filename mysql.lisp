@@ -31,7 +31,7 @@
 ;;; SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-(in-package #:mysql)
+(in-package #:artisan-mysql)
 
 ;;-----------------------------------------------------------------------------
 
@@ -365,19 +365,19 @@
   (string-append "'" (escape-string str) "'"))
 
 (defmacro with-connection ((db credentials) &body body)
-  `(let ((,db (apply #'mysql:connect ,credentials)))
+  `(let ((,db (apply #'artisan-mysql:connect ,credentials)))
      (unwind-protect (progn ,@body)
-       (when ,db (mysql:disconnect ,db)))))
+       (when ,db (artisan-mysql:disconnect ,db)))))
 
 (defmacro with-transaction ((db) &body body)
   (with-unique-names (res)
     `(let ((,res nil))
        (unwind-protect
            (prog2
-                (mysql:query ,db "START TRANSACTION")
+                (artisan-mysql:query ,db "START TRANSACTION")
                 (progn ,@body)
              (setf ,res t))
-         (mysql:query ,db (if ,res "COMMIT" "ROLLBACK"))))))
+         (artisan-mysql:query ,db (if ,res "COMMIT" "ROLLBACK"))))))
 
 
 ;;-----------------------------------------------------------------------------
