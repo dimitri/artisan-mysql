@@ -1,7 +1,7 @@
 (defsystem #:artisan-mysql
     :serial t
     :name "MySQL Native Driver"
-    :author "Dimitri Fontaine"
+    :author "Art Obrezan"
     :version "1.0"
     :licence "MIT-style"
     :maintainer '("Dimitri Fontaine")
