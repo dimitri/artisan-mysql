@@ -11,4 +11,10 @@
                  #:usocket
                  #:uiop)
     :components ((:file "package")
-                 (:file "mysql" :depends-on ("package"))))
+                 (:file "sha1")
+                 (:file "string-utils")
+                 (:file "bytes")
+                 (:file "packets")
+                 (:file "protocol")
+                 (:file "query")
+                 (:file "mysql")))
